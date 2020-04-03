@@ -3,15 +3,44 @@
 $(document).ready(function(){
 
 
-var backSquare;
+var backSquare, numberSquare;
 
 
   //  ciclo per stampare nell'html 64 div che rappresentano i quadrati
   for (var i = 1; i <= 64; i++) {
     backSquare = $('.container').html();
-    console.log(backSquare);
     $('.container').html(backSquare + "<div class='square'>" + "</div>");
   }
+
+  // assegno la classe red agli elementi
+  var number = 0;
+  while (number < 15)  { // esegui il ciclio finchè non ci sono 15 numeri tutti diversi, cioè finchè la variabile di controllo è minore di 15
+    numberSquare = $('.square').eq(numberRandom()); // seleziona l'elemento square all'interno dell'array
+    
+    if (!numberSquare.hasClass('red')) { // se l'elemento selezionato non ha la class red
+      numberSquare.addClass("red"); // allora aggiungila
+      number++; // e incrementa la variabile di controllo di 1 e riesegui il ciclo
+    }
+
+  }
+
+  // funzione per generare un numero random da 0 a 63
+  function numberRandom () {
+      return Math.floor(Math.random() * 64);
+
+  }
+
+
+  // elementSquare.click(
+  //   function() {
+  //     if ($(this).hasClass('red')) {
+  //       $(this).css({"background": "red"});
+  //     } else if ($(this).hasClass('green')) {
+  //       $(this).css({"background": "green"});
+  //     }
+  // });
+
+
 
 
 

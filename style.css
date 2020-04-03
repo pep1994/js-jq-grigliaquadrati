@@ -18,3 +18,11 @@
   height: calc(100% / 8);
   border: solid 1px black;
 }
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
