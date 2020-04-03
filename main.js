@@ -3,7 +3,8 @@
 $(document).ready(function(){
 
 
-var backSquare, numberSquare;
+var backSquare, numberSquare, greenScore = 0, redScore = 0;
+
 
 
   //  ciclo per stampare nell'html 64 div che rappresentano i quadrati
@@ -35,16 +36,20 @@ var backSquare, numberSquare;
 
   // modifico il valore della variabile in modo che punti a tutti i quadrati perchè dopo il ciclo il valore che rimane in memoria è solo l'ultimo generato
 
-  console.log(numberSquare);
+  console.log(numberSquare.eq());
 
 
-
+  // scateno l'evento click, quando si clicca su un quadrato con la class red si colorerà di rosso e aggiornerà il punteggio red-score, stessa cosa per i quadrati con la class green
   numberSquare.click(
     function() {
       if ($(this).hasClass('red')) {
         $(this).css({"background": "red"});
+        redScore++;
+        $('#red-score').text("Red Score: " + (redScore));
       } else if ($(this).hasClass('green')) {
         $(this).css({"background": "green"});
+        greenScore++;
+        $('#green-score').text("Green Score: " + (greenScore));
       }
   });
 

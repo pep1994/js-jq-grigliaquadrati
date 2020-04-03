@@ -26,3 +26,10 @@
 .green {
   background-color: green;
 } */
+
+.score {
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
