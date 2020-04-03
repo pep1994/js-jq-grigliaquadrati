@@ -19,17 +19,33 @@
   border: solid 1px black;
 }
 
-/* .red {
-  background-color: red;
-}
-
-.green {
-  background-color: green;
-} */
-
 .score {
   margin: 30px auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 60%;
 }
+
+.modal {
+  opacity: 0;
+  text-align: center;
+  position: relative;
+  top: -100px;
+  
+  /* animation: fade 1.5s forwards; */
+}
+
+/*
+@keyframes fade {
+
+  0% {
+    opacity: 0;
+    top: -100px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+} */
