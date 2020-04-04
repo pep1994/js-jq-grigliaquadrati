@@ -18,7 +18,6 @@ $('#green-score').css({"color": "green"}); // coloro di verde il punteggio green
   var number = 0;
   while (number < 15)  { // esegui il ciclio finchè non ci sono 15 numeri tutti diversi, cioè finchè la variabile di controllo è minore di 15
     numberSquare = $('.square').eq(numberRandom()); // seleziona l'elemento square all'interno dell'array
-
     if (!numberSquare.hasClass('red')) { // se l'elemento selezionato non ha la class red
       numberSquare.addClass("red"); // allora aggiungila
       number++; // e incrementa la variabile di controllo di 1 e riesegui il ciclo
@@ -85,5 +84,6 @@ $('#green-score').css({"color": "green"}); // coloro di verde il punteggio green
       return Math.floor(Math.random() * 64);
 
   }
+
 
 });
