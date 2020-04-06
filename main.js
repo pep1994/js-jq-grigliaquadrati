@@ -3,7 +3,11 @@
 $(document).ready(function(){
 
 
-var backSquare, numberSquare, greenScore = 0, redScore = 0, scoreContent;
+var backSquare, numberSquare, greenScore = 0, redScore = 0, scoreContent, content;
+
+$('.lose').hide(); // rendo invisibile il messaggio "hai perso"
+content = $('.lose').html();
+console.log(content);
 
 $('#red-score').css({"color": "red"}); // coloro di rosso il punteggio red-score
 $('#green-score').css({"color": "green"}); // coloro di verde il punteggio green-score
@@ -13,6 +17,14 @@ $('#green-score').css({"color": "green"}); // coloro di verde il punteggio green
     backSquare = $('.container').html();
     $('.container').html(backSquare + "<div class='square'>" + "</div>");
   }
+
+  // funzione per generare un numero random da 0 a 63
+  function numberRandom () {
+      return Math.floor(Math.random() * 64);
+
+  }
+
+
 
   // assegno la classe red agli elementi
   var number = 0;
@@ -36,12 +48,14 @@ $('#green-score').css({"color": "green"}); // coloro di verde il punteggio green
   }
 
 
+
   // scateno l'evento click, quando si clicca su un quadrato con la class red si colorerà di rosso e aggiornerà il punteggio red-score, stessa cosa per i quadrati con la class green
   numberSquare.click(
     function() {
 
-      // se il quadrato ha la class "cliccato ccreo un messaggio per l'utente che lo avvisa che non può cliccare lo stesso quadrato più volte
-      if ($(this).hasClass('cliccato')) {
+      if (redScore === 3) {
+
+      } else if ($(this).hasClass('cliccato')) { // se il quadrato ha la class "cliccato ccreo un messaggio per l'utente che lo avvisa che non può cliccare lo stesso quadrato più volte
         $('.modal-container').html('<div class="modal">' + '<h1>' + 'Non puoi cliccare più volte sullo stesso quadrato' + '</h1>' + '</div>'); // messaggio per l'utente
         $('.modal').animate({ // animazione
           opacity: 1,
@@ -75,15 +89,32 @@ $('#green-score').css({"color": "green"}); // coloro di verde il punteggio green
           rotate: '180deg'
         }, 600);
       }
+
+      // quando lo score dei quadrati rossi cliccati arriverà a 3, comunico all'utente che ha perso e creo un bottone che permette di giocare ancora ricaricando la pagina
+      if (redScore === 3) {
+
+        $('.lose').slideDown(1500);
+        $('.lose').html(content + "<button type='button' id='button'>" + "Play again" + "</button>");
+      }
+
+      // ricarica pagina al click sul bottone "play again"
+      $('.lose button').click(function() {
+          location.reload();
+      });
+
   });
 
+  // tramite una timing-function aggiungo messaggio per l'utente
+  setTimeout(
+    function () {
+      $('.modal-container').append("<span>Attento, se il conteggio dei quadrati rossi arriva a 3, hai perso!")
+  }, 1000);
 
-
-  // funzione per generare un numero random da 0 a 63
-  function numberRandom () {
-      return Math.floor(Math.random() * 64);
-
-  }
+  // tramite una timing-function nascondo messaggio per l'utente dopo un certo tempo
+  setTimeout(
+    function () {
+      $('.modal-container span').slideUp();
+  }, 5000);
 
 
 });

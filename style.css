@@ -32,9 +32,28 @@
   text-align: center;
   position: relative;
   top: -100px;
-  
+
   /* animation: fade 1.5s forwards; */
 }
+
+.lose {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: none;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+}
+
 
 /*
 @keyframes fade {
